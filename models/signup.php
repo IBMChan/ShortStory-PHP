@@ -7,22 +7,30 @@
   <link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header>
-    <nav>
-      <h1 class="logo">Short Story</h1>
-    </nav>
-  </header>
+<header class="login-header">
+  <p class="site-title">Short Story</p>
+  <nav class="back-nav">
+    <ul>
+        <li><a href="../index.php">⬅ Back</a></li>
+    </ul>
+</nav>
+</header>
 
   <section class="login">
     <div class="form-container">
-      <h2>Login</h2>
+      <h2>Sign Up </h2>
+      <h2>To Short Story</h2>
       <form method="POST" action="login.php">
         <input type="text" name="username" placeholder="Enter Username" required>
         <input type="password" name="password" placeholder="Enter Password" required>
         <button type="submit" class="btn">Login</button>
       </form>
-      <p>Don't have an account? <a href="signup.php">Register here</a></p>
+      <p>Already have an account?<a href="login.php">Login here</a></p>
     </div>
   </section>
+  <footer>
+        <p>&copy; 2025 My PHP Project</p>
+        <p>All rights reserved.</p>
+    </footer>
 </body>
 </html>

@@ -254,70 +254,88 @@ footer {
 .contact-card a:hover {
     text-decoration: underline;
 }
+/* Header fix: back button goes to right */
+
+.login-header {
+   background: #AD9C8E;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: none;          /* remove border */
+  box-shadow: none;      /* remove shadow */
+}
+
+
+.back-nav {
+  margin-left:950px; /* pushes it fully to the right */
+}
+
+
+
+/* Enhanced login hero */
 .login {
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-              url("https://images.unsplash.com/photo-1512820790803-83ca734da794") 
+  background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+              url("https://images.unsplash.com/photo-1512820790803-83ca734da794")
               no-repeat center center/cover;
+  padding: 20px;
 }
 
-/* Form container */
+/* Glow glassmorphism for login box */
 .form-container {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(8px);
-  padding: 30px;
-  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  padding: 20px;
+  border-radius: 10px;
   text-align: center;
   color: #fff;
   max-width: 400px;
   width: 100%;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+  animation: fadeIn 1s ease-in-out;
 }
 
 .form-container h2 {
   font-family: 'Tangerine', cursive;
-  font-size: 2.5rem;
-  margin-bottom: 20px;
+  font-size: 2rem;
+  margin-bottom: 10px;
+  text-shadow: 0 2px 5px rgba(0,0,0,0.5);
 }
 
 .form-container input {
-  width: 100%;
-  padding: 12px;
+  width: 80%;
+  padding: 10px;
   margin: 10px 0;
   border-radius: 8px;
   border: none;
   outline: none;
+  font-size: 1rem;
+  background-color: #f0f0f0
 }
 
+/* Better login button */
 .btn {
-  width: 100%;
-  padding: 12px;
-  background: #f39c12;
+  width: 50%;
+  padding: 14px;
   color: #fff;
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  transition: background 0.3s ease;
-  font-weight: bold;
+  font-size: 0.8rem;
+  transition: transform 0.2s, box-shadow 0.3s ease;
 }
 
 .btn:hover {
-  background: #d35400;
+  transform: scale(1.0);
+  background-color: #8b7c6d;
 }
 
-.form-container p {
-  margin-top: 15px;
-  font-size: 0.9rem;
-}
-
-.form-container a {
-  color: #f39c12;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.form-container a:hover {
-  text-decoration: underline;
+/* Fade-in animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
