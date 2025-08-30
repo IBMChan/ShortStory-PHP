@@ -16,7 +16,7 @@
         <li><a href="#contact">Contact</a></li>
         <!-- Updated Login link -->
         <li><a href="models/login.php">Login</a></li>
-        <li><a href="#">Signup</a></li>
+        <li><a href="models/signup.php">Signup</a></li>
     </ul>
 </nav>
 

@@ -1,8 +1,62 @@
+<?php
+require_once '../db/db.php'; // database connection
+
+$error = '';
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $username = trim($_POST['username']);
+    $password = trim($_POST['password']);
+    $confirm_password = trim($_POST['confirm_password']);
+    $email = trim($_POST['email']);
+    $phone = trim($_POST['phone']);
+
+    // Password match check
+    if ($password !== $confirm_password) {
+        $error = "Passwords do not match!";
+    }
+    // Validate phone: exactly 10 digits
+    elseif (!preg_match("/^\d{10}$/", $phone)) {
+        $error = "Phone number must be exactly 10 digits.";
+    } else {
+        // Hash the password
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+        // Check if username already exists
+        $stmt_check = $conn->prepare("SELECT user_id FROM user WHERE u_name = ?");
+        $stmt_check->bind_param("s", $username);
+        $stmt_check->execute();
+        $stmt_check->store_result();
+
+        if($stmt_check->num_rows > 0){
+            $error = "Username already exists! Please choose another.";
+        } else {
+            // Insert user into database (user_id auto-increment)
+            $stmt = $conn->prepare("INSERT INTO user (u_name, password, email, contact, created_at) VALUES (?, ?, ?, ?, NOW())");
+            $stmt->bind_param("ssss", $username, $hashed_password, $email, $phone);
+
+            if ($stmt->execute()) {
+                echo "<script>
+                        alert('Successfully registered!');
+                        window.location.href = 'login.php';
+                      </script>";
+                exit();
+            } else {
+                $error = "Error: " . $stmt->error;
+            }
+
+            $stmt->close();
+        }
+        $stmt_check->close();
+        $conn->close();
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Login - Short Story</title>
+  <title>Sign Up - Short Story</title>
   <link rel="stylesheet" href="../assets/style.css"> 
   <link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
 </head>
@@ -13,24 +67,32 @@
     <ul>
         <li><a href="../index.php">⬅ Back</a></li>
     </ul>
-</nav>
+  </nav>
 </header>
 
-  <section class="login">
-    <div class="form-container">
-      <h2>Sign Up </h2>
-      <h2>To Short Story</h2>
-      <form method="POST" action="login.php">
-        <input type="text" name="username" placeholder="Enter Username" required>
-        <input type="password" name="password" placeholder="Enter Password" required>
-        <button type="submit" class="btn">Login</button>
-      </form>
-      <p>Already have an account?<a href="login.php">Login here</a></p>
-    </div>
-  </section>
-  <footer>
-        <p>&copy; 2025 My PHP Project</p>
-        <p>All rights reserved.</p>
-    </footer>
+<section class="login">
+  <div class="form-container">
+    <h2>Sign Up</h2>
+    <?php if($error): ?>
+        <p style="color:red;"><?php echo $error; ?></p>
+    <?php endif; ?>
+
+    <form method="POST" action="">
+      <input type="text" name="username" placeholder="Enter Username" required>
+      <input type="password" name="password" placeholder="Enter Password" required>
+      <input type="password" name="confirm_password" placeholder="Re-Enter Password" required>
+      <input type="email" name="email" placeholder="Enter Email" required>
+      <input type="tel" name="phone" placeholder="Valid phone Number" pattern="\d{10}" required>
+      <button type="submit" class="btn">Sign Up</button>
+    </form>
+
+    <p>Already have an account? <a href="login.php">Login here</a></p>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2025 My PHP Project</p>
+  <p>All rights reserved.</p>
+</footer>
 </body>
 </html>

@@ -283,6 +283,8 @@ footer {
               url("https://images.unsplash.com/photo-1512820790803-83ca734da794")
               no-repeat center center/cover;
   padding: 20px;
+      margin-top: 70px; /* adjust to header height */
+    margin-bottom: 50px;
 }
 
 /* Glow glassmorphism for login box */
@@ -294,9 +296,10 @@ footer {
   text-align: center;
   color: #fff;
   max-width: 400px;
-  width: 100%;
+  width: 70%;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
   animation: fadeIn 1s ease-in-out;
+  
 }
 
 .form-container h2 {
