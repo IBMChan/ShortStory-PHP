@@ -35,26 +35,40 @@ $success = false;
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['title'])) {
     $book_id = generateBookId($conn);
     $user_id = $_SESSION['user_id'];
-    $title = $_POST['title'];
+    $title = trim($_POST['title']);
     $pub_year = $_POST['pub_year'];
     $price = $_POST['price'];
-    $abstract = $_POST['abstract'];
+    $abstract = trim($_POST['abstract']);
     $genre = $_POST['genre'];
 
     // Only take the first author
-    $author_name = trim($_POST['authors'][0]);
-    $auth_id = generateAuthorId($conn);
+  // Only take the first author
+$author_name = trim($_POST['authors'][0]);
 
-    // Insert author
+// Check if author already exists
+$stmt = $conn->prepare("SELECT auth_id FROM author WHERE auth_name = ?");
+$stmt->bind_param("s", $author_name);
+$stmt->execute();
+$result = $stmt->get_result();
+
+if ($row = $result->fetch_assoc()) {
+    // Author exists, use existing ID
+    $auth_id = $row['auth_id'];
+} else {
+    // Author doesn't exist, generate new ID and insert
+    $auth_id = generateAuthorId($conn);
     $stmt = $conn->prepare("INSERT INTO author (auth_id, auth_name) VALUES (?, ?)");
     $stmt->bind_param("ss", $auth_id, $author_name);
     $stmt->execute();
+}
 
-    // Insert book
+
+    // Insert book using prepared statement
     $stmt = $conn->prepare("INSERT INTO book (book_id, user_id, author_id, title, pub_year, price, abstract, genre, created_at) 
                             VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW())");
-    $stmt->bind_param("ssssisds", $book_id, $user_id, $auth_id, $title, $pub_year, $price, $abstract, $genre);
-    
+    $stmt->bind_param("sssssdss", $book_id, $user_id, $auth_id, $title, $pub_year, $price, $abstract, $genre);
+
+
     if ($stmt->execute()) {
         // Handle cover image upload
         if (!empty($_FILES['book_cover']['name'])) {
@@ -99,13 +113,10 @@ $genres = [
   <link rel="stylesheet" href="../assets/style.css">
   <link rel="stylesheet" href="../assets/blog.css">
   <link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
-</head>
-<body>
   <script>
     <?php if ($success): ?>
       alert("✅ Book added successfully!");
     <?php endif; ?>
-
     function addAuthorField() {
         alert("⚠️ Only one author allowed per book in this version.");
     }

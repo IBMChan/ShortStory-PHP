@@ -2,7 +2,7 @@
 require_once '../db/db.php'; // database connection
 
 // Pagination setup
-$limit = 12;
+$limit = 8;
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
 $offset = ($page - 1) * $limit;
 
@@ -31,6 +31,56 @@ $bookResult = mysqli_query($conn, $bookQuery);
     <link rel="stylesheet" href="../assets/style.css">
     <link rel="stylesheet" href="../assets/views.css">
     <link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Popup styling */
+        .card-popup {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .card-content {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+        }
+        .card-content img {
+            width: 150px;
+            height: auto;
+            float: left;
+            margin-right: 15px;
+        }
+        .card-content .close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+        }
+        .book-card {
+            cursor: pointer;
+            text-align: center;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            transition: transform 0.2s;
+        }
+        .book-card:hover {
+            transform: scale(1.05);
+        }
+    </style>
 </head>
 <body>
 <header>
@@ -79,7 +129,11 @@ $bookResult = mysqli_query($conn, $bookQuery);
                     <p><strong>Genre:</strong> <?= htmlspecialchars($book['genre']); ?></p>
                     <p><strong>Publication Year:</strong> <?= htmlspecialchars($book['pub_year']); ?></p>
                     <p><strong>Price:</strong> ₹<?= htmlspecialchars($book['price']); ?></p>
-                    <p><strong>Abstract:</strong> <?= nl2br(htmlspecialchars($book['abstract'])); ?></p>
+                    <p><strong>Abstract:</strong> 
+                        <?= !empty(trim($book['abstract'])) 
+                            ? nl2br(htmlspecialchars($book['abstract'])) 
+                            : 'Not available'; ?>
+                    </p>
                 </div>
             </div>
         <?php endwhile; ?>
