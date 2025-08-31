@@ -130,7 +130,7 @@ $genres = [
       <input type="text" name="title" required>
 
       <label>Publication Year</label>
-      <input type="number" name="pub_year" min="1900" max="<?= date('Y'); ?>" required>
+      <input type="number" name="pub_year" min="1800" max="<?= date('Y'); ?>" required>
 
       <label>Price</label>
       <input type="number" step="0.01" name="price" required>

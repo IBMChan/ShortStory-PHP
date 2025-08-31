@@ -105,24 +105,31 @@ $blogs = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
 <section class="blogs-display">
   <h2>Your Blogs</h2>
   <?php if (!empty($blogs)): ?>
-    <div class="blogs-grid"> <!-- Add this wrapper -->
+    <div class="blogs-grid">
     <?php foreach ($blogs as $blog): ?>
       <div class="blog-card">
         <!-- Card Header -->
         <div class="blog-card-header">
           <?php
-            $base = "../assets/image/" . $blog['blog_id'];
-            $candidates = [$base . ".png", $base . ".jpg", $base . ".jpeg", $base . ".gif", $base . ".webp"];
-            $imgFound = null;
-            foreach ($candidates as $path) {
-                if (file_exists($path)) { $imgFound = $path; break; }
-            }
-          ?>
-          <?php if ($imgFound): ?>
-            <img src="<?= htmlspecialchars($imgFound); ?>" alt="Blog Image">
-          <?php else: ?>
-            <img src="https://via.placeholder.com/120x80.png?text=No+Image" alt="No Image">
-          <?php endif; ?>
+$baseName = $blog['blog_id'];
+$imgFound = null;
+$exts = ['png', 'jpg', 'jpeg', 'gif', 'webp'];
+foreach ($exts as $ext) {
+    $serverPath = __DIR__ . "/../assets/blogimg/$baseName.$ext"; // server path
+    if (file_exists($serverPath)) {
+        $imgFound = "../assets/blogimg/$baseName.$ext"; // browser path
+        break;
+    }
+}
+?>
+<?php if ($imgFound): ?>
+    <img src="<?= htmlspecialchars($imgFound); ?>" alt="Blog Image">
+<?php else: ?>
+    <img src="https://via.placeholder.com/120x80.png?text=No+Image" alt="No Image">
+<?php endif; ?>
+
+
+
           <h3><?= htmlspecialchars($blog['b_title']); ?></h3>
         </div>
 
@@ -145,12 +152,11 @@ $blogs = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
         </div>
       </div>
     <?php endforeach; ?>
-    </div> <!-- End of blogs-grid -->
+    </div>
   <?php else: ?>
     <p>No blogs created yet.</p>
   <?php endif; ?>
 </section>
-
 
 <footer>
   <p>&copy; 2025 Short Story</p>

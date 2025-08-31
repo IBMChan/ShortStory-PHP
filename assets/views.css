@@ -1,0 +1,336 @@
+/* Fonts */
+body {
+    font-family: Arial, sans-serif;
+}
+header {
+    background-color: #AD9C8E;
+    padding: 8px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: black;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;  /* ensures header is always on top */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* Fix sections overlapping under fixed header */
+section {
+    scroll-margin-top: 90px; /* adjust based on header height */
+}
+
+header nav {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    margin-left:100px;
+}
+
+header nav ul {
+    list-style: none;
+    padding: 8px 20px;
+    margin: 0;
+    display: flex;
+    gap: 15px;
+    text-align: center;
+    border: 1px solid #000;
+    border-radius: 12px;
+
+}
+
+header nav ul li a {
+    text-decoration: none;
+    font-size: 13px;
+    color: #000000;
+    font-family: Helvetica, sans-serif;
+    font-weight: bold;
+}
+header nav ul li a:hover {
+    color: #E8DF9E;  
+    transition: 0.3s;
+}
+
+
+/* Blogs Section */
+.blogs-display {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 20px;
+}
+
+.blogs-display h2 {
+    font-family: 'Tangerine', cursive;
+    font-size: 42px;
+    color: #000000;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+/* Grid for 3 blogs per row */
+.blogs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+/* Blog Card Styling */
+.blog-card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #D9BBB0;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+
+    transition: transform 0.2s;
+}
+
+.blog-card:hover {
+    transform: translateY(-5px);
+}
+
+.blog-card img {
+    width: 100%;
+    height: 350px; /* smaller than before */
+    object-fit: fill; /* ensures image fills the card */
+}
+
+.blog-details {
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.blog-details h3 {
+    font-size: 12px;
+    color: #333;
+    margin: 0;
+}
+
+.blog-details p {
+    font-size: 10px;
+    color: #555;
+    margin: 0;
+}
+
+.b-comm {
+    color: #222;
+    font-size: 14px;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #AD9C8E;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    padding: 0px 0px;
+    font-size: 9pt;
+    display: flex;
+    justify-content: space-between;
+}
+.search-box {
+    display: flex;
+    align-items: center;
+    border: 1px solid #000;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-left: 350px;
+
+}
+
+.search-box input {
+    border: none;
+    outline: none;
+    padding: 6px 10px;
+    font-size: 14px;
+    background: transparent;
+}
+
+.search-box button {
+    border: none;
+    background: #AD9C8E;
+    color: white;
+    padding: 6px 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.search-box button:hover {
+    background: #333;
+}
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.pagination a {
+    padding: 8px 12px;
+    border: 1px solid #AD9C8E;
+    border-radius: 6px;
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.pagination a:hover {
+    background-color: #AD9C8E;
+    color: #fff;
+}
+
+.pagination a.active {
+    background-color: #AD9C8E;
+    color: #fff;
+}
+.books-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 100px 20px 50px; /* top padding ensures header doesn't overlap */
+}
+
+.page-title {
+    font-family: 'Tangerine', cursive;
+    font-size: 48px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Grid 6 cards horizontally */
+.books-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 15px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1400px) { .books-grid { grid-template-columns: repeat(4, 1fr); } }
+@media (max-width: 1024px) { .books-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 768px) { .books-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px) { .books-grid { grid-template-columns: 1fr; } }
+
+.book-card {
+    background: #D9BBB0;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+    transition: transform 0.2s;
+}
+
+.book-card:hover { transform: translateY(-5px); }
+
+.book-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: fill;
+    margin-bottom: 8px;
+}
+
+.book-card h3 {
+    font-size: 14px;
+    color: #333;
+    margin: 4px 0;
+}
+
+.book-card p {
+    font-size: 12px;
+    color: #555;
+    margin: 2px 0;
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 30px;
+}
+
+.pagination a {
+    padding: 8px 12px;
+    border: 1px solid #AD9C8E;
+    border-radius: 6px;
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.pagination a:hover { background-color: #AD9C8E; color: #fff; }
+
+.pagination a.active { background-color: #AD9C8E; color: #fff; }
+/* Card-style Popup */
+.card-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.card-content {
+    background: #D9BBB0;
+    padding: 20px;
+    border-radius: 12px;
+    width: 350px;
+    max-width: 90%;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    animation: popin 0.2s ease-out;
+}
+
+.card-content img {
+    width: 100%;
+    height: 200px;
+    object-fit: fill;
+    margin-bottom: 8px;
+    border-radius: 6px;
+    margin-top:5px;
+}
+
+.card-content h3 {
+    font-family: 'Tangerine', cursive;
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.card-content p {
+    font-size: 14px;
+    margin: 6px 0;
+}
+
+.card-popup .close {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    font-size: 22px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+@keyframes popin {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}

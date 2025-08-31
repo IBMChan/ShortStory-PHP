@@ -53,27 +53,45 @@
         <!-- Conveyor Belt of Books -->
         <div class="book-slider">
             <div class="book-track">
-            <img src="https://covers.openlibrary.org/b/id/8231856-L.jpg" alt="Fiction Book">
-            <img src="https://covers.openlibrary.org/b/id/10909258-L.jpg" alt="Romance Book">
-            <img src="https://covers.openlibrary.org/b/id/240726-L.jpg" alt="Classic Novel">
-            <img src="https://covers.openlibrary.org/b/id/8235112-L.jpg" alt="Fantasy Book">
-            <img src="https://covers.openlibrary.org/b/id/9251995-L.jpg" alt="Adventure Book">
-            <img src="https://covers.openlibrary.org/b/id/11153272-L.jpg" alt="Thriller Book">
-            <img src="https://covers.openlibrary.org/b/id/13518240-L.jpg" alt="Mystery Book">
-            <img src="https://covers.openlibrary.org/b/id/9874010-L.jpg" alt="Self Help Book">
-            <img src="https://covers.openlibrary.org/b/id/12662858-L.jpg" alt="Motivational Book">
-            <img src="https://covers.openlibrary.org/b/id/10521241-L.jpg" alt="Sci-Fi Book">
-            <img src="https://covers.openlibrary.org/b/id/8231856-L.jpg" alt="Fiction Book">
-            <img src="https://covers.openlibrary.org/b/id/10909258-L.jpg" alt="Romance Book">
-            <img src="https://covers.openlibrary.org/b/id/240726-L.jpg" alt="Classic Novel">
-            <img src="https://covers.openlibrary.org/b/id/8235112-L.jpg" alt="Fantasy Book">
-            <img src="https://covers.openlibrary.org/b/id/9251995-L.jpg" alt="Adventure Book">
-            <img src="https://covers.openlibrary.org/b/id/11153272-L.jpg" alt="Thriller Book">
-            <img src="https://covers.openlibrary.org/b/id/13518240-L.jpg" alt="Mystery Book">
-            <img src="https://covers.openlibrary.org/b/id/9874010-L.jpg" alt="Self Help Book">
-            <img src="https://covers.openlibrary.org/b/id/12662858-L.jpg" alt="Motivational Book">
-            <img src="https://covers.openlibrary.org/b/id/10521241-L.jpg" alt="Sci-Fi Book">
-            </div>
+        <img src="https://covers.openlibrary.org/b/id/8231856-L.jpg" alt="Fiction Book">
+        <img src="https://covers.openlibrary.org/b/id/10909258-L.jpg" alt="Romance Book">
+        <img src="https://covers.openlibrary.org/b/id/240726-L.jpg" alt="Classic Novel">
+        <img src="https://covers.openlibrary.org/b/id/8235112-L.jpg" alt="Fantasy Book">
+        <img src="https://covers.openlibrary.org/b/id/9251995-L.jpg" alt="Adventure Book">
+        <img src="https://covers.openlibrary.org/b/id/8231991-L.jpg" alt="Mystery Book">
+        <img src="https://covers.openlibrary.org/b/id/8231872-L.jpg" alt="Thriller Book">
+        <img src="https://covers.openlibrary.org/b/id/8235120-L.jpg" alt="Sci-Fi Book">
+        <img src="https://covers.openlibrary.org/b/id/8235133-L.jpg" alt="Historical Fiction Book">
+        <img src="https://covers.openlibrary.org/b/id/8235145-L.jpg" alt="Biography Book">
+        <img src="https://covers.openlibrary.org/b/id/8235157-L.jpg" alt="Children's Book">
+        <img src="https://covers.openlibrary.org/b/id/8235168-L.jpg" alt="Young Adult Book">
+        <img src="https://covers.openlibrary.org/b/id/8235179-L.jpg" alt="Horror Book">
+        <img src="https://covers.openlibrary.org/b/id/8235188-L.jpg" alt="Poetry Book">
+        <img src="https://covers.openlibrary.org/b/id/8235197-L.jpg" alt="Drama Book">
+        <img src="https://covers.openlibrary.org/b/id/8235206-L.jpg" alt="Non-Fiction Book">
+        <img src="https://covers.openlibrary.org/b/id/8235215-L.jpg" alt="Philosophy Book">
+        <img src="https://covers.openlibrary.org/b/id/8235224-L.jpg" alt="Self-Help Book">
+        <img src="https://covers.openlibrary.org/b/id/8235233-L.jpg" alt="Science Book">
+        <img src="https://covers.openlibrary.org/b/id/8235242-L.jpg" alt="Math Book">
+        <img src="https://covers.openlibrary.org/b/id/8235251-L.jpg" alt="Cookbook">
+        <img src="https://covers.openlibrary.org/b/id/8235260-L.jpg" alt="Travel Book">
+        <img src="https://covers.openlibrary.org/b/id/8235269-L.jpg" alt="Art Book">
+        <img src="https://covers.openlibrary.org/b/id/8235278-L.jpg" alt="Photography Book">
+        <img src="https://covers.openlibrary.org/b/id/8235287-L.jpg" alt="Music Book">
+        <img src="https://covers.openlibrary.org/b/id/8235296-L.jpg" alt="Graphic Novel">
+        <img src="https://covers.openlibrary.org/b/id/8235305-L.jpg" alt="Comic Book">
+        <img src="https://covers.openlibrary.org/b/id/8235314-L.jpg" alt="Mystery Thriller">
+        <img src="https://covers.openlibrary.org/b/id/8235323-L.jpg" alt="Classic Literature">
+        <img src="https://covers.openlibrary.org/b/id/8235332-L.jpg" alt="Adventure Novel">
+        <img src="https://covers.openlibrary.org/b/id/8235341-L.jpg" alt="Fantasy Adventure">
+        <img src="https://covers.openlibrary.org/b/id/8235350-L.jpg" alt="Romantic Fiction">
+        <img src="https://covers.openlibrary.org/b/id/8235359-L.jpg" alt="Science Fiction Novel">
+        <img src="https://covers.openlibrary.org/b/id/8235368-L.jpg" alt="Historical Novel">
+        <img src="https://covers.openlibrary.org/b/id/8235377-L.jpg" alt="Classic Drama">
+        <img src="https://covers.openlibrary.org/b/id/8235386-L.jpg" alt="Biography Memoir">
+        <img src="https://covers.openlibrary.org/b/id/8235395-L.jpg" alt="Horror Thriller">
+        <img src="https://covers.openlibrary.org/b/id/8235404-L.jpg" alt="Children's Adventure">
+    </div>
         </div>
         </section>
 <section id="contact">

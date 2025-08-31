@@ -48,6 +48,9 @@ header nav ul {
     margin-right: 25px;
 
 }
+.content-wrapper {
+    padding-top: 50px; /* previously 90px */
+}
 
 .search-boxx input {
     border: none;
@@ -70,25 +73,22 @@ header nav ul {
     background: #333;
 }
 
-/* ================= Hero Sections for Blogs & Books ================= */
-.hero-section {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+.hero-section .blogs-grid {
+    padding-top: 0px;       /* add a tiny padding if needed */
+    gap: 12px;               /* smaller gap between cards */
 }
-
-/* Section header: title + view all button inline */
 .section-header {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;  /* center the entire header */
     align-items: center;
-    margin-bottom: 10px;
+    gap: 15px;               /* slightly smaller space between title and button */
+    margin-bottom: 0px;      /* reduced from 0px (or previous) to tighten cards below */
 }
 
 .section-header h2 {
-    font-size: 20px;
-    color: #AD9C8E;
-    text-transform: uppercase;
+    font-family: 'Tangerine', cursive;
+    font-size: 45px;
+    color: #000000;
     letter-spacing: 1px;
 }
 
@@ -100,12 +100,15 @@ header nav ul {
     border-radius: 6px;
     font-size: 12px;
     transition: 0.3s;
+    margin-left: 30px;
 }
 
 .view-all-btn:hover {
-    background-color: #FFD700;
+    background-color: #8b7c6d;
     color: #000;
 }
+
+
 
 /* Card Slider Horizontal */
 .card-slider {
@@ -148,7 +151,7 @@ header nav ul {
 .card img {
     width: 100%;
     height: 120px;   /* fill image height */
-    object-fit: cover;
+    object-fit: fill;
     border-radius: 8px;
     margin-bottom: 6px;
 }
@@ -171,3 +174,170 @@ header nav ul {
     font-size: 12px;
     color: #555;
 }
+/* Blogs Grid for Home Page */
+.blogs-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5 cards per row */
+  gap: 15px;
+  align-items: stretch;
+  padding: 20px 40px; /* increased left/right margin */
+}
+
+.blog-card {
+  background: #D9BBB0;
+  border-radius: 10px;
+  padding: 8px;
+  margin-top: 5px; /* reduced top margin */
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.blog-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: fill;
+  border-radius: 8px;
+  margin-bottom: 6px; /* can also reduce if needed */
+}
+
+.blog-card h3 {
+  font-size: 14px;
+  margin: 4px 0; /* slightly reduced */
+  color: #AD9C8E;
+}
+
+.blog-card p {
+  font-size: 12px;
+  margin: 2px 0; /* slightly reduced */
+  color: #333;
+}
+.b-comm {
+  font-weight: bold;
+  font-size: 12px;
+  color: #555;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .blogs-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .blogs-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+}
+
+@media (max-width: 600px) {
+  .blogs-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}
+
+/* Profile section two-column layout */
+.profile {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 120px 20px 40px; 
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.profile-form {
+    background: #E8D593;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    flex: 1 1 400px; /* responsive width */
+    min-width: 300px;
+}
+
+/* Forms inside profile */
+.profile-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-form label {
+    margin-top: 10px;
+}
+
+hr {
+    margin: 30px 0;
+    border: 1px solid #D9BBB0;
+}
+
+/* Error & success messages */
+.error-message, .success-message {
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.error-message { background: #f8d7da; color: #721c24; }
+.success-message { background: #d4edda; color: #155724; }
+
+/* Buttons */
+.profile-form .btn {
+    margin-top: 15px;
+}
+/* Reduce gap between header and title */
+.books-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 10px 40px; /* reduced top padding */
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.6);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 400px;
+    max-width: 90%;
+    text-align: left;
+    position: relative;
+}
+
+.modal-content h3 {
+    margin-top: 0;
+    font-family: 'Tangerine', cursive;
+    font-size: 28px;
+}
+
+.modal-content p {
+    font-size: 14px;
+    margin: 6px 0;
+}
+
+.modal .close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 22px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+
