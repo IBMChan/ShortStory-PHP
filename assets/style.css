@@ -1,0 +1,435 @@
+html {
+    scroll-behavior: smooth;
+}
+body {
+    margin: 0;
+    padding: 0 0 60px 0; 
+    box-sizing: border-box;
+    background-color: #F7E6CA;
+}
+header {
+    background-color: #AD9C8E;
+    padding: 8px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: black;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;  /* ensures header is always on top */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* Fix sections overlapping under fixed header */
+section {
+    scroll-margin-top: 80px; /* adjust based on header height */
+}
+
+header nav {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+header nav ul {
+    list-style: none;
+    padding: 8px 20px;
+    margin: 0;
+    display: flex;
+    gap: 20px;
+    text-align: center;
+    border: 1px solid #000;
+    border-radius: 12px;
+
+}
+
+header nav ul li a {
+    text-decoration: none;
+    font-size: 14px;
+    color: #000000;
+    font-family: Helvetica, sans-serif;
+    font-weight: bold;
+}
+header nav ul li a:hover {
+    color: #E8DF9E;  
+    transition: 0.3s;
+}
+
+
+
+.search-box {
+    display: flex;
+    align-items: center;
+    border: 1px solid #000;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-right: 25px;
+
+}
+
+.search-box input {
+    border: none;
+    outline: none;
+    padding: 6px 10px;
+    font-size: 14px;
+    background: transparent;
+}
+
+.search-box button {
+    border: none;
+    background: #AD9C8E;
+    color: white;
+    padding: 6px 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.search-box button:hover {
+    background: #333;
+}
+
+
+.site-title {
+    font-family: 'Tangerine', cursive;
+    font-size: 40px;
+    margin: 0;
+    color: #000000;
+    font-weight: bold;
+}
+
+
+.hero {
+    height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),url("https://images.unsplash.com/photo-1512820790803-83ca734da794") no-repeat center center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    padding: 0 10px;
+    
+
+}
+
+
+.hero-content {
+    background: rgba(0,0,0,0.6);
+    padding: 30px;
+    border-radius: 12px;
+    max-width: 600px;
+}
+
+.hero h1 {
+    font-size: 38px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+
+/* Button */
+.btn {
+    background-color: #AD9C8E;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background-color: #8b7c6d;
+}
+
+/* Footer */
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #AD9C8E;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    padding: 0px 0px;
+    font-size: 9pt;
+    display: flex;
+    justify-content: space-between;
+}
+.about {
+    padding: 10px 10px;
+    text-align: center;
+    
+}
+
+.about h2 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.about p {
+    font-size: 18px;
+    max-width: 900px;
+    margin: 0 auto 40px;
+    color: #333;
+    line-height: 1.6;
+}
+
+.book-slider {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    /* background: #F7E6CA; */
+    padding: 0px 0;
+    margin-bottom: 40px;
+}
+
+.book-track {
+    display: flex;
+    width: calc(150px * 10);
+    animation: scrollBooks 20s linear infinite;
+}
+
+.book-track img {
+    width: 150px;
+    height: 180px;
+    margin: 0px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: transform 0.3s;
+}
+
+.book-track img:hover {
+    transform: scale(1.1);
+}
+
+@keyframes scrollBooks {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+#contact {
+    text-align: center;
+    padding: 0px;
+    background-color: #F7E6CA;
+    color: #333;
+}
+
+.contact-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.contact-card {
+    background: #D9BBB0;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    width: 250px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+}
+
+.contact-card h3 {
+    color: #AD7D52;
+    margin-bottom: 10px;
+}
+
+.contact-card a {
+    text-decoration: none;
+    color: #0077cc;
+}
+
+.contact-card a:hover {
+    text-decoration: underline;
+}
+/* Header fix: back button goes to right */
+
+.login-header {
+   background: #AD9C8E;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: none;          /* remove border */
+  box-shadow: none;      /* remove shadow */
+}
+
+
+.back-nav {
+  margin-left:950px; /* pushes it fully to the right */
+}
+
+
+
+/* Enhanced login hero */
+.login {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+              url("https://images.unsplash.com/photo-1512820790803-83ca734da794")
+              no-repeat center center/cover;
+  padding: 20px;
+      margin-top: 70px; /* adjust to header height */
+    margin-bottom: 50px;
+}
+
+/* Glow glassmorphism for login box */
+.form-container {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  color: #fff;
+  max-width: 400px;
+  width: 70%;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+  animation: fadeIn 1s ease-in-out;
+  
+}
+
+.form-container h2 {
+  font-family: 'Tangerine', cursive;
+  font-size: 2rem;
+  margin-bottom: 10px;
+  text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+}
+
+.form-container input {
+  width: 80%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  background-color: #f0f0f0
+}
+
+/* Better login button */
+.btn {
+  width: 50%;
+  padding: 14px;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: transform 0.2s, box-shadow 0.3s ease;
+}
+
+.btn:hover {
+  transform: scale(1.0);
+  background-color: #8b7c6d;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ====== Blog Page Styles ====== */
+.blog-section {
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background: #F7E6CA;
+  padding: 100px 20px 40px;
+}
+
+.blog-form {
+  background: #E8D593;
+  padding: 20px;
+  border-radius: 12px;
+  max-width: 600px;
+  width: 100%;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.blog-form h2 {
+  text-align: center;
+  margin-bottom: 15px;
+  font-family: 'Tangerine', cursive;
+  font-size: 2rem;
+  color: #333;
+}
+
+.blog-form label {
+  font-weight: bold;
+  display: block;
+  margin: 10px 0 5px;
+  color: #333;
+}
+
+.blog-form input,
+.blog-form textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #D9BBB0;
+  margin-bottom: 15px;
+  font-size: 1rem;
+}
+
+.blog-form button {
+  background: #D9BBB0;
+  color: #000;
+  font-weight: bold;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+  transition: 0.3s;
+}
+
+.blog-form button:hover {
+  background: #c89f9a;
+}
+
+.blogs-display {
+  width: 80%;
+  margin: 30px auto;
+  padding-bottom: 80px;
+}
+
+.blogs-display h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.blog-card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.blog-card h3 {
+  margin-top: 0;
+  color: #333;
+}
+
+.blog-card img {
+  max-width: 100%;
+  margin-top: 10px;
+  border-radius: 8px;
+}
