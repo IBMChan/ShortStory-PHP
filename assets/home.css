@@ -1,0 +1,71 @@
+/* Page-specific overrides for home.php */
+
+/* Header layout fix */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Arrange: Left = Title, Center = Search, Right = Nav */
+header .site-title {
+    flex: 1;   /* stays left */
+}
+
+header .search-box {
+    flex: 1;   /* centered */
+    display: flex;
+    justify-content: center;
+    margin-right:100px;
+}
+
+header nav {
+    flex: 1;   /* pushed right */
+    display: flex;
+    justify-content: flex-end;
+}
+
+header nav ul {
+    list-style: none;
+    margin-right: 30px;
+    padding: 8px 16px;
+    display: flex;
+    gap: 20px;
+    border: 1px solid #000;
+    border-radius: 12px;
+}
+
+
+
+
+.search-boxx {
+    display: flex;
+    align-items: center;
+    border: 1px solid #000;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-right: 25px;
+
+}
+
+.search-boxx input {
+    border: none;
+    outline: none;
+    padding: 8px 20px;
+    font-size: 12px;
+    background: transparent;
+}
+
+.search-boxx button {
+    border: none;
+    background: #AD9C8E;
+    color: white;
+    padding: 6px 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.search-boxx button:hover {
+    background: #333;
+}
+

@@ -1,43 +1,30 @@
 <?php
-// login.php
-
 session_start();
-require_once '../db/db.php'; // database connection
+include("../db/db.php");
 
-$error = '';
-
+$error = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = trim($_POST['username']);
-    $password = trim($_POST['password']);
+    $username = $_POST['username'];
+    $password = $_POST['password'];
 
-    // Check if username exists
-    $stmt = $conn->prepare("SELECT user_id, password FROM user WHERE u_name = ?");
+    $sql = "SELECT user_id, u_name, password FROM user WHERE u_name=? LIMIT 1";
+    $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $username);
     $stmt->execute();
-    $stmt->store_result();
+    $result = $stmt->get_result();
 
-    if ($stmt->num_rows == 1) {
-        $stmt->bind_result($user_id, $hashed_password);
-        $stmt->fetch();
-
-        // Verify password
-        if (password_verify($password, $hashed_password)) {
-            // Password correct, start session
-            $_SESSION['user_id'] = $user_id;
-            $_SESSION['username'] = $username;
-
-            // Redirect to home.php
+    if ($row = $result->fetch_assoc()) {
+        if (password_verify($password, $row['password'])) {
+            $_SESSION['user_id'] = $row['user_id']; // ✅ keep for later use
+            $_SESSION['username'] = $row['u_name'];
             header("Location: home.php");
             exit();
         } else {
-            $error = "Invalid password!";
+            $error = "Invalid password.";
         }
     } else {
-        $error = "Username not found!";
+        $error = "User not found.";
     }
-
-    $stmt->close();
-    $conn->close();
 }
 ?>
 
@@ -63,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <div class="form-container">
     <h2>Login</h2>
 
-    <?php if($error): ?>
+    <?php if (!empty($error)): ?>
         <p style="color:red;"><?php echo $error; ?></p>
     <?php endif; ?>
 

@@ -1,0 +1,88 @@
+/* ===== Main Layout ===== */
+main {
+  min-height: 80vh;
+  padding: 40px 20px;
+  background: #F7E6CA;
+  font-family: Arial, sans-serif;
+}
+
+/* ===== Blog Form Section ===== */
+.blog-section {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;         /* less space */
+}
+
+.blog-form {
+  background: #D9BBB0;
+  backdrop-filter: blur(12px);
+  padding: 12px 18px;
+  border-radius: 12px;
+  max-width: 380px;           /* much smaller */
+  width: 100%;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+  animation: fadeIn 0.8s ease-in-out;
+  text-align: left;           /* left-aligned content */
+}
+
+.blog-form h2 {
+  font-size: 30px;            /* larger title */
+  margin-bottom: 14px;
+  color: #333;
+  text-align: left;           /* also left-aligned */
+}
+
+.blog-form input,
+.blog-form textarea,
+.blog-form button {
+  width: 90%;                 /* narrower fields */
+  font-size: 13px;            /* smaller font */
+  margin: 8px 0;
+  padding: 7px 8px;           /* less padding */
+  border-radius: 6px;
+}
+
+.blog-form textarea {
+  height: 68px;
+}
+
+.blog-form button {
+  background: #8B5E3C;
+  color: white;
+  font-weight: bold;
+}
+
+.blog-form button:hover {
+  background: #6e452a;
+}
+
+/* Blogs grid: Always 3 columns, cards don't take full row */
+.blogs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  align-items: stretch;
+}
+
+.blog-card {
+  width: 100%;                /* fills only its column's width */
+  min-height: 200px;
+  background: #D9BBB0;
+  border-radius: 10px;
+  padding: 12px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+@media (max-width: 900px) {
+  .blogs-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  .blogs-grid {
+    grid-template-columns: 1fr;
+  }
+}

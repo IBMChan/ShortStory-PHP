@@ -1,6 +1,6 @@
 <?php
-require_once '../db/db.php'; // database connection
-
+require_once '../db/db.php';
+require_once 'helpers.php'; // ID generator
 $error = '';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -10,40 +10,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = trim($_POST['email']);
     $phone = trim($_POST['phone']);
 
-    // Password match check
     if ($password !== $confirm_password) {
         $error = "Passwords do not match!";
-    }
-    // Validate phone: exactly 10 digits
-    elseif (!preg_match("/^\d{10}$/", $phone)) {
+    } elseif (!preg_match("/^\d{10}$/", $phone)) {
         $error = "Phone number must be exactly 10 digits.";
     } else {
-        // Hash the password
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-        // Check if username already exists
+        // Check username
         $stmt_check = $conn->prepare("SELECT user_id FROM user WHERE u_name = ?");
         $stmt_check->bind_param("s", $username);
         $stmt_check->execute();
         $stmt_check->store_result();
 
-        if($stmt_check->num_rows > 0){
-            $error = "Username already exists! Please choose another.";
+        if ($stmt_check->num_rows > 0) {
+            $error = "Username already exists!";
         } else {
-            // Insert user into database (user_id auto-increment)
-            $stmt = $conn->prepare("INSERT INTO user (u_name, password, email, contact, created_at) VALUES (?, ?, ?, ?, NOW())");
-            $stmt->bind_param("ssss", $username, $hashed_password, $email, $phone);
+            // Generate user_id (U1, U2…)
+            $user_id = generateId($conn, "user", "U", "user_id");
+
+            $stmt = $conn->prepare("INSERT INTO user (user_id, u_name, password, email, contact, created_at) VALUES (?, ?, ?, ?, ?, NOW())");
+            $stmt->bind_param("sssss", $user_id, $username, $hashed_password, $email, $phone);
 
             if ($stmt->execute()) {
-                echo "<script>
-                        alert('Successfully registered!');
-                        window.location.href = 'login.php';
-                      </script>";
+                echo "<script>alert('Successfully registered!'); window.location.href='login.php';</script>";
                 exit();
             } else {
                 $error = "Error: " . $stmt->error;
             }
-
             $stmt->close();
         }
         $stmt_check->close();
@@ -51,6 +45,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
