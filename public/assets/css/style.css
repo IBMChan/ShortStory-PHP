@@ -1,0 +1,452 @@
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --background-color: #ecf0f1;
+    --surface-color: #ffffff;
+    --text-color: #34495e;
+    --border-color: #bdc3c7;
+    --delete-color: #e74c3c;
+    --success-color: #27ae60;
+    --font-primary: 'Lora', serif;
+    --font-secondary: 'Lato', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-secondary);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+a {
+    color: var(--secondary-color);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+header {
+    background-color: var(--surface-color);
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 2rem;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: var(--font-primary);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+main {
+    padding: 2rem 0;
+}
+
+.site-footer {
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 2rem;
+    color: #7f8c8d;
+    border-top: 1px solid var(--border-color);
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    background-color: var(--secondary-color);
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn:hover {
+    background-color: #2980b9;
+    color: #fff;
+    text-decoration: none;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: #34495e;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.btn-delete {
+    background-color: var(--delete-color);
+}
+
+.btn-delete:hover {
+    background-color: #c0392b;
+}
+
+.btn-full {
+    width: 100%;
+    text-align: center;
+    padding: 0.75rem;
+}
+
+.hero {
+    text-align: center;
+    padding: 4rem 1rem;
+    margin-bottom: 2rem;
+}
+
+.hero h1 {
+    font-family: var(--font-primary);
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.book-list {
+    margin-bottom: 2rem;
+}
+
+.book-list h2 {
+    font-family: var(--font-primary);
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.5rem;
+}
+
+.book-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.book-card {
+    background: var(--surface-color);
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.book-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0,0,0,0.1);
+}
+
+.book-card a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.book-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    display: block;
+}
+
+.book-card h3, .book-card p, .book-card .rating {
+    padding: 0 1rem;
+}
+
+.book-card h3 {
+    margin-top: 1rem;
+    font-size: 1.1rem;
+    font-family: var(--font-primary);
+}
+
+.book-card p {
+    font-size: 0.9rem;
+    color: #7f8c8d;
+    padding-bottom: 1rem;
+}
+
+.book-card .rating {
+    font-weight: bold;
+    color: #f39c12;
+    padding-bottom: 1rem;
+}
+
+.form-container {
+    max-width: 500px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: var(--surface-color);
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.auth-form h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-family: var(--font-primary);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.form-group input[type="file"] {
+    padding: 0.5rem;
+}
+
+.form-switch {
+    text-align: center;
+    margin-top: 1.5rem;
+}
+
+.error-message, .success-message {
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border-radius: 5px;
+    border: 1px solid;
+}
+
+.error-message {
+    background-color: #f8d7da;
+    color: #721c24;
+    border-color: #f5c6cb;
+}
+
+.success-message {
+    background-color: #d4edda;
+    color: #155724;
+    border-color: #c3e6cb;
+}
+
+.book-detail-container {
+    background: var(--surface-color);
+    padding: 2rem;
+    border-radius: 5px;
+}
+
+.book-header {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 2rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 2rem;
+    margin-bottom: 2rem;
+}
+
+.book-cover img {
+    border-radius: 5px;
+}
+
+.book-info h1 {
+    font-family: var(--font-primary);
+    margin-bottom: 0.5rem;
+}
+
+.book-info h2 {
+    font-weight: normal;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.book-info .meta, .book-info .price {
+    margin-bottom: 0.5rem;
+}
+
+.book-info .price {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin: 1rem 0;
+}
+
+.book-abstract {
+    margin: 1.5rem 0;
+}
+
+.reviews-section h2 {
+    font-family: var(--font-primary);
+    margin-bottom: 1.5rem;
+}
+
+.review-card {
+    background: var(--background-color);
+    padding: 1.5rem;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    border-left: 4px solid var(--secondary-color);
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.review-card h3 {
+    font-family: var(--font-primary);
+    margin-bottom: 0;
+}
+
+.review-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    color: #7f8c8d;
+    margin-bottom: 1rem;
+}
+
+.search-container {
+    background: var(--surface-color);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.search-container h2 {
+    font-family: var(--font-primary);
+    margin-bottom: 1rem;
+}
+
+.search-container form {
+    display: flex;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.search-container input {
+    flex-grow: 1;
+    border-radius: 5px 0 0 5px;
+    border-right: none;
+}
+
+.search-container button {
+    border-radius: 0 5px 5px 0;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 2rem;
+}
+
+.profile-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.profile-header h1 {
+    font-family: var(--font-primary);
+    margin-bottom: 0.5rem;
+}
+
+.profile-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+.profile-left-column {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.profile-details-card, 
+.profile-password-card, 
+.profile-reviews-card {
+    background: var(--surface-color);
+    padding: 2rem;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.profile-details-card h2, 
+.profile-password-card h2, 
+.profile-reviews-card h2 {
+    font-family: var(--font-primary);
+    margin-bottom: 1.5rem;
+}
+
+.profile-reviews-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.review-card-condensed {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: var(--background-color);
+    border-radius: 5px;
+}
+
+.review-card-condensed .review-book-title {
+    font-style: italic;
+    color: #7f8c8d;
+    margin-left: 0.5rem;
+}
