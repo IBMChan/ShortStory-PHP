@@ -1,0 +1,123 @@
+/* General body styling */
+body {
+    background-color: #f5f5dc; /* beige */
+    color: #333;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header styling */
+header {
+    background-color: #d2b48c; /* tan */
+    padding: 20px;
+    text-align: center;
+    color: #fff;
+    font-size: large;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+header h1 {
+    margin-bottom: 10px;
+    font-size: 2em;
+}
+
+input[type="text"] {
+    padding: 10px;
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+button {
+    padding: 10px 15px;
+    background-color: #8b4513; /* saddle brown */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+}
+
+button:hover {
+    background-color: #a0522d; /* sienna */
+}
+
+/* Book list section */
+.book-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+    gap: 20px;
+
+}
+
+.book-card {
+    background-color: #fffaf0; /* floral white */
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    width: 220px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.2s;
+
+}
+
+.book-card img {
+    border-radius: 5px;
+    margin-bottom: 10px;
+
+}
+
+.book-card h3 {
+    color: #8b0000; /* dark red */
+    font-size: 1.2em;
+    margin: 10px 0 5px;
+}
+
+.book-card p {
+    margin: 5px 0;
+    font-size: 0.95em;
+    color: #555;
+}
+
+.stars {
+    color: #ffcc00; /* gold */
+    font-size: 1.1em;
+}
+
+a {
+    display: inline-block;
+    margin-top: 10px;
+    color: #700a0a; /* dark green */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Footer styling */
+footer {
+    background-color: #d2b48c;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 0.95em;
+}
+
+footer a {
+    color: #fff;
+    text-decoration: underline;
+}
+
+footer em {
+    display: block;
+    margin-top: 10px;
+    font-style: italic;
+    color: #fdf5e6;
+}
