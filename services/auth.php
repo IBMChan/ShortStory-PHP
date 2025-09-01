@@ -31,6 +31,7 @@ class Auth implements IAuth {
                 $_SESSION['user_id'] = $row['user_id'];
                 $_SESSION['username'] = $row['u_name'];
                 return ["status" => true, "message" => "Login successful!"];
+                session_start();
             } else {
                 return ["status" => false, "message" => "Invalid password."];
             }
@@ -75,7 +76,7 @@ class Auth implements IAuth {
 
     // Logout method
     public function logout() {
-        session_start();
+        
         session_unset();
         session_destroy();
         return ["status" => true, "message" => "Logged out successfully."];

@@ -10,8 +10,8 @@ abstract class Content {
     abstract public function getByUser($userId);
 }
 ?>
-<!-- // OOP Concepts Demonstrated:
 
+<!-- 
 // Abstraction: The class defines a contract without specifying implementation.
 
 // Encapsulation: Database connection is protected, restricting direct external access. -->
