@@ -245,8 +245,8 @@ header nav ul {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    padding: 120px 20px 40px; 
-    gap: 40px;
+    padding: 20px;       /* remove the huge 120px top padding */
+    gap: 30px;  
     flex-wrap: wrap;
 }
 
@@ -257,6 +257,7 @@ header nav ul {
     box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     flex: 1 1 400px; /* responsive width */
     min-width: 300px;
+    margin-top: 100px;
 }
 
 /* Forms inside profile */
@@ -338,6 +339,4 @@ hr {
     font-weight: bold;
     cursor: pointer;
 }
-
-
 

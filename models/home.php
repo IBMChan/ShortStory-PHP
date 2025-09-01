@@ -62,7 +62,7 @@ $bookResult = mysqli_query($conn, $bookQuery);
                             }
                             ?>
                             <img src="<?= $imgFound ? htmlspecialchars($imgFound) : 'https://via.placeholder.com/150x100?text=No+Image'; ?>" alt="Blog Image">
-                            <h3><?= htmlspecialchars($blog['b_title']); ?></h3>
+                            <h3 style="color: #000000;"><?= htmlspecialchars($blog['b_title']); ?></h3>
                             <p><?= substr(htmlspecialchars($blog['b_intro']), 0, 80) . '...'; ?></p>
                             <p class="b-comm">Comments: <?= htmlspecialchars($blog['b_comm']); ?></p>
                         </div>
@@ -88,7 +88,7 @@ $bookResult = mysqli_query($conn, $bookQuery);
                             }
                             ?>
                             <img src="<?= $imgFound ? htmlspecialchars($imgFound) : 'https://via.placeholder.com/150x100?text=No+Image'; ?>" alt="<?= htmlspecialchars($book['title']); ?>">
-                            <h3><?= htmlspecialchars($book['title']); ?></h3>
+                            <h3 style="color: #000000;"><?= htmlspecialchars($book['title']); ?></h3>
                             <p>Author: <?= htmlspecialchars($book['author_name'] ?? 'Unknown'); ?></p>
                             <p>Price: ₹<?= htmlspecialchars($book['price']); ?></p>
                             <p>Year: <?= htmlspecialchars($book['pub_year']); ?></p>

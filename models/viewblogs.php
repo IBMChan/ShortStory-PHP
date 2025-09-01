@@ -1,26 +1,20 @@
 <?php
-require_once '../db/db.php'; // database connection
+require_once '../db/db.php';
+require_once '../services/Blog.php';
+
+$blogModel = new Blog($conn);
 
 // Pagination setup
-$limit = 6; // 6 blogs per page
+$limit = 6;
 $page = isset($_GET['page']) && is_numeric($_GET['page']) ? (int) $_GET['page'] : 1;
 $offset = ($page - 1) * $limit;
 
-// Get total number of blogs
-$totalQuery = "SELECT COUNT(*) AS total FROM blogs";
-$totalResult = mysqli_query($conn, $totalQuery);
-$totalBlogs = mysqli_fetch_assoc($totalResult)['total'];
+// Total number of blogs
+$totalBlogs = count($blogModel->getAll()); // can optimize later with COUNT query
 $totalPages = ceil($totalBlogs / $limit);
 
-// Fetch blogs with limit and offset
-$blogQuery = "
-    SELECT b.*, u.u_name 
-    FROM blogs b
-    JOIN user u ON b.user_id = u.user_id
-    ORDER BY b.created_at DESC
-    LIMIT $limit OFFSET $offset
-";
-$blogResult = mysqli_query($conn, $blogQuery);
+// Fetch blogs with limit and offset using Blog class
+$blogs = $blogModel->getAll($limit, $offset);
 ?>
 
 <!DOCTYPE html>
@@ -52,7 +46,7 @@ $blogResult = mysqli_query($conn, $blogQuery);
 <main class="blogs-display">
     <h2>All Blogs</h2>
     <div class="blogs-grid">
-        <?php while($blog = mysqli_fetch_assoc($blogResult)) : ?>
+        <?php foreach($blogs as $blog): ?>
             <div class="blog-card">
                 <?php
                 $base = "../assets/blogimg/" . $blog['blog_id'];
@@ -73,7 +67,7 @@ $blogResult = mysqli_query($conn, $blogQuery);
                     <p class="b-date"><em>Posted on: <?= date("F j, Y, g:i a", strtotime($blog['created_at'])); ?></em></p>
                 </div>
             </div>
-        <?php endwhile; ?>
+        <?php endforeach; ?>
     </div>
 
     <!-- Pagination -->

@@ -125,10 +125,14 @@ $user = $result_user->fetch_assoc();
     </header>
 
 <section class="profile">
-    <!-- Profile Details Column -->
+
     <div class="profile-form">
-        <h2><?php echo htmlspecialchars($user['u_name']); ?>'s Profile</h2>
-        <p>Member since <?php echo date('F Y', strtotime($user['created_at'])); ?></p>
+       <section class="section-header" style="margin-bottom: 0px;">
+
+    <h2 ><?php echo htmlspecialchars($user['u_name']); ?>'s Profile</h2>
+    <p>Member since <?php echo date('F Y', strtotime($user['created_at'])); ?></p>
+</section>
+        
 
         <?php if (!empty($errors)): ?>
             <div class="error-message">
@@ -161,7 +165,6 @@ $user = $result_user->fetch_assoc();
 
     <!-- Change Password Column -->
     <div class="profile-form">
-        <h2>Change Password</h2>
         <form action="profile.php" method="POST">
             <label for="current_password">Current Password</label>
             <input type="password" id="current_password" name="current_password" required>

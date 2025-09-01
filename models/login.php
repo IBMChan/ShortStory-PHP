@@ -1,33 +1,19 @@
 <?php
-session_start();
-include("../db/db.php");
+require_once '../services/auth.php';
+$auth = new Auth($conn);
 
 $error = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-
-    $sql = "SELECT user_id, u_name, password FROM user WHERE u_name=? LIMIT 1";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("s", $username);
-    $stmt->execute();
-    $result = $stmt->get_result();
-
-    if ($row = $result->fetch_assoc()) {
-        if (password_verify($password, $row['password'])) {
-            $_SESSION['user_id'] = $row['user_id']; // ✅ keep for later use
-            $_SESSION['username'] = $row['u_name'];
-            header("Location: home.php");
-            exit();
-        } else {
-            $error = "Invalid password.";
-        }
+    $result = $auth->login($_POST['username'], $_POST['password']);
+    if ($result['status']) {
+        header("Location: home.php");
+        exit();
     } else {
-        $error = "User not found.";
+        $error = $result['message'];
     }
 }
-?>
 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

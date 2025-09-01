@@ -1,6 +1,6 @@
 <?php
 require_once '../db/db.php';
-require_once 'helpers.php';
+require_once '../services/Blog.php';
 session_start();
 
 if (!isset($_SESSION['user_id'])) {
@@ -8,46 +8,35 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
-// Handle blog submission
+$blogModel = new Blog($conn);
 $success = false;
+
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['b_title'])) {
+    $userId = $_SESSION['user_id'];
     $b_title = $_POST['b_title'];
     $b_intro = $_POST['b_intro'];
     $b_body  = $_POST['b_body'];
     $b_con   = $_POST['b_con'];
     $b_comm  = $_POST['b_comm'];
 
-    $user_id = $_SESSION['user_id'];  // varchar(50)
-    $blog_id = uniqid("blog_", true); // generate unique blog_id
+    $blogId = $blogModel->create($userId, $b_title, $b_intro, $b_body, $b_con, $b_comm);
 
-    $stmt = $conn->prepare("INSERT INTO blogs (blog_id, user_id, b_title, b_intro, b_body, b_con, b_comm, created_at) 
-                            VALUES (?, ?, ?, ?, ?, ?, ?, NOW())");
-    $stmt->bind_param("sssssss", $blog_id, $user_id, $b_title, $b_intro, $b_body, $b_con, $b_comm);
-
-    if ($stmt->execute()) {
-        // Handle image upload
-        if (!empty($_FILES['blog_image']['name'])) {
-            $targetDir = "../assets/blogimg/";
-            $ext = strtolower(pathinfo($_FILES['blog_image']['name'], PATHINFO_EXTENSION));
-            $allowed = ['jpg','jpeg','png','gif','webp'];
-            if (in_array($ext, $allowed)) {
-                $newName = $blog_id . "." . $ext;
-                move_uploaded_file($_FILES['blog_image']['tmp_name'], $targetDir . $newName);
-            }
+    // Handle image upload
+    if (!empty($_FILES['blog_image']['name'])) {
+        $targetDir = "../assets/blogimg/";
+        $ext = strtolower(pathinfo($_FILES['blog_image']['name'], PATHINFO_EXTENSION));
+        $allowed = ['jpg','jpeg','png','gif','webp'];
+        if (in_array($ext, $allowed)) {
+            move_uploaded_file($_FILES['blog_image']['tmp_name'], $targetDir . $blogId . "." . $ext);
         }
-        $success = true;
-    } else {
-        echo "❌ DB Error: " . $stmt->error;
     }
+    $success = true;
 }
 
 // Fetch blogs for current user
-$user_id = $_SESSION['user_id'];
-$stmt = $conn->prepare("SELECT * FROM blogs WHERE user_id = ? ORDER BY created_at DESC");
-$stmt->bind_param("s", $user_id);
-$stmt->execute();
-$blogs = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+$blogs = $blogModel->getByUser($_SESSION['user_id']);
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">

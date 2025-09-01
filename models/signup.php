@@ -1,49 +1,31 @@
 <?php
-require_once '../db/db.php';
-require_once 'helpers.php'; // ID generator
-$error = '';
+require_once '../services/auth.php';
+require_once '../services/send_email.php'; // include the SMTP email function
+$auth = new Auth($conn);
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = trim($_POST['username']);
-    $password = trim($_POST['password']);
-    $confirm_password = trim($_POST['confirm_password']);
-    $email = trim($_POST['email']);
-    $phone = trim($_POST['phone']);
+if ($result['status']) {
+    // Prepare email content
+    $to = $_POST['email'];
+    $subject = "Welcome to Short Story!";
+    $body = "
+        <html>
+        <head><title>Welcome to Short Story</title></head>
+        <body>
+            <h2>Hello ".$_POST['username'].",</h2>
+            <p>Thank you for signing up at Short Story!</p>
+            <p>We're excited to have you on board.</p>
+            <p>Best Regards,<br>Short Story Team</p>
+        </body>
+        </html>
+    ";
 
-    if ($password !== $confirm_password) {
-        $error = "Passwords do not match!";
-    } elseif (!preg_match("/^\d{10}$/", $phone)) {
-        $error = "Phone number must be exactly 10 digits.";
-    } else {
-        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+    // Send email via SMTP
+    send_email_smtp($to, $subject, $body);
 
-        // Check username
-        $stmt_check = $conn->prepare("SELECT user_id FROM user WHERE u_name = ?");
-        $stmt_check->bind_param("s", $username);
-        $stmt_check->execute();
-        $stmt_check->store_result();
-
-        if ($stmt_check->num_rows > 0) {
-            $error = "Username already exists!";
-        } else {
-            // Generate user_id (U1, U2…)
-            $user_id = generateId($conn, "user", "U", "user_id");
-
-            $stmt = $conn->prepare("INSERT INTO user (user_id, u_name, password, email, contact, created_at) VALUES (?, ?, ?, ?, ?, NOW())");
-            $stmt->bind_param("sssss", $user_id, $username, $hashed_password, $email, $phone);
-
-            if ($stmt->execute()) {
-                echo "<script>alert('Successfully registered!'); window.location.href='login.php';</script>";
-                exit();
-            } else {
-                $error = "Error: " . $stmt->error;
-            }
-            $stmt->close();
-        }
-        $stmt_check->close();
-        $conn->close();
-    }
+    echo "<script>alert('".$result['message']."'); window.location.href='login.php';</script>";
+    exit();
 }
+
 ?>
 
 
