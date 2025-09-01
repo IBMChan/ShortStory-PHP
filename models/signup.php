@@ -1,29 +1,23 @@
+
 <?php
 require_once '../services/auth.php';
-require_once '../services/send_email.php'; // include the SMTP email function
 $auth = new Auth($conn);
 
-if ($result['status']) {
-    // Prepare email content
-    $to = $_POST['email'];
-    $subject = "Welcome to Short Story!";
-    $body = "
-        <html>
-        <head><title>Welcome to Short Story</title></head>
-        <body>
-            <h2>Hello ".$_POST['username'].",</h2>
-            <p>Thank you for signing up at Short Story!</p>
-            <p>We're excited to have you on board.</p>
-            <p>Best Regards,<br>Short Story Team</p>
-        </body>
-        </html>
-    ";
-
-    // Send email via SMTP
-    send_email_smtp($to, $subject, $body);
-
-    echo "<script>alert('".$result['message']."'); window.location.href='login.php';</script>";
-    exit();
+$error = "";
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $result = $auth->signup(
+        $_POST['username'],
+        $_POST['password'],
+        $_POST['email'],
+        $_POST['phone'],
+        $_POST['confirm_password']
+    );
+    if ($result['status']) {
+        echo "<script>alert('".$result['message']."'); window.location.href='login.php';</script>";
+        exit();
+    } else {
+        $error = $result['message'];
+    }
 }
 
 ?>

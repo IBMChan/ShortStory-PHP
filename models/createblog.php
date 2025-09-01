@@ -134,6 +134,8 @@ foreach ($exts as $ext) {
         <!-- Card Footer -->
         <div class="blog-card-footer">
           <a href="editblog.php?id=<?= urlencode($blog['blog_id']); ?>" class="btn edit-btn">✏️ Edit</a>
+
+
           <form action="deleteblog.php" method="POST" style="display:inline;">
             <input type="hidden" name="id" value="<?= $blog['blog_id']; ?>">
             <button type="submit" class="btn delete-btn" onclick="return confirm('⚠️ Are you sure you want to delete this blog?');">🗑 Delete</button>

@@ -53,6 +53,19 @@ header nav ul li a:hover {
     transition: 0.3s;
 }
 
+.blog-card {
+    max-width: 600px; /* prevents it from stretching too wide */
+    margin: 0 auto;   /* centers it in the grid column */
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #D9BBB0;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s;
+}
 
 /* Blogs Section */
 .blogs-display {
@@ -72,9 +85,11 @@ header nav ul li a:hover {
 /* Grid for 3 blogs per row */
 .blogs-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* min 300px, max fills available space */
+    justify-content: center; /* centers the grid items */
     gap: 15px;
 }
+
 
 /* Blog Card Styling */
 .blog-card {
@@ -275,62 +290,3 @@ footer {
 .pagination a:hover { background-color: #AD9C8E; color: #fff; }
 
 .pagination a.active { background-color: #AD9C8E; color: #fff; }
-/* Card-style Popup */
-.card-popup {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.4);
-    justify-content: center;
-    align-items: center;
-    z-index: 2000;
-}
-
-.card-content {
-    background: #D9BBB0;
-    padding: 20px;
-    border-radius: 12px;
-    width: 350px;
-    max-width: 90%;
-    text-align: center;
-    position: relative;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    animation: popin 0.2s ease-out;
-}
-
-.card-content img {
-    width: 100%;
-    height: 200px;
-    object-fit: fill;
-    margin-bottom: 8px;
-    border-radius: 6px;
-    margin-top:5px;
-}
-
-.card-content h3 {
-    font-family: 'Tangerine', cursive;
-    font-size: 25px;
-    margin-bottom: 10px;
-}
-
-.card-content p {
-    font-size: 14px;
-    margin: 6px 0;
-}
-
-.card-popup .close {
-    position: absolute;
-    top: 8px;
-    right: 12px;
-    font-size: 22px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-@keyframes popin {
-    from { transform: scale(0.8); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
-}

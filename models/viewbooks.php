@@ -2,7 +2,7 @@
 require_once '../db/db.php'; // database connection
 
 // Pagination setup
-$limit = 8;
+$limit = 12;
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
 $offset = ($page - 1) * $limit;
 
